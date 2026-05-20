@@ -42,8 +42,8 @@ height:100vh;
 /* SIDEBAR */
 
 .sidebar{
-width:240px;
-padding:20px;
+width:200px;
+padding:25px;
 
 background:rgba(255,255,255,0.05);
 
@@ -56,14 +56,14 @@ backdrop-filter:blur(18px);
 
 .profile{
 text-align:center;
-margin-bottom:25px;
+margin-bottom:2px;
 }
 
 .profile-icon{
-width:85px;
+width:82px;
 height:85px;
 
-border-radius:50%;
+border-radius:34%;
 
 margin:auto;
 
@@ -187,10 +187,10 @@ margin-bottom:20px;
 }
 
 .tab-btn{
-padding:12px 18px;
+padding:12px 14px;
 
 border:none;
-border-radius:14px;
+border-radius:9px;
 
 background:rgba(255,255,255,0.06);
 
@@ -229,7 +229,7 @@ padding:14px;
 border:none;
 outline:none;
 
-border-radius:16px;
+border-radius:8px;
 
 background:rgba(255,255,255,0.06);
 
@@ -315,7 +315,7 @@ font-size:13px;
 /* TOOL */
 
 .tool-card{
-padding:20px;
+padding:12px;
 
 border-radius:24px;
 
@@ -326,7 +326,7 @@ background:rgba(255,255,255,0.06);
 
 .label{
 display:block;
-margin-bottom:8px;
+margin-bottom:7px;
 }
 
 /* TEXTAREA */
@@ -356,7 +356,7 @@ resize:none;
 select{
 width:100%;
 
-padding:13px;
+padding:14px;
 
 margin-top:12px;
 
@@ -467,7 +467,7 @@ text-align:center;
 /* INFO */
 
 .info{
-margin-top:14px;
+margin-top:9px;
 
 padding:12px;
 
