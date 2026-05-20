@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KAIZE PANEL</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- VIDEO -->
+
+<video autoplay muted loop id="bgvideo">
+
+<source src="bg.mp4" type="video/mp4">
+
+</video>
+
+<div class="overlay"></div>
+
+<!-- MAIN -->
+
+<div class="dashboard">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="profile">
+
+<div class="profile-icon">
+👤
+</div>
+
+<h2>FURINA UI</h2>
+
+<p>Modern Dashboard</p>
+
+</div>
+
+<div class="menu">
+
+<button onclick="showTab('dashboard')">
+🏠 Dashboard
+</button>
+
+<button onclick="showTab('tool')">
+🛠 Tool
+</button>
+
+</div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div class="main">
+
+<div class="topbar">
+
+<h1>KAIZE PANEL</h1>
+
+<div class="status">
+🟢 Online
+</div>
+
+</div>
+
+<!-- TABS -->
+
+<div class="tabs">
+
+<button class="tab-btn active" onclick="showTab('dashboard')">
+🏠 Dashboard
+</button>
+
+<button class="tab-btn" onclick="showTab('tool')">
+🛠 Tool
+</button>
+
+</div>
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="tab-content active-tab">
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input type="text" placeholder="Search tools...">
+
+</div>
+
+<!-- QUICK ACTION -->
+
+<div class="quick-actions">
+
+<button onclick="showTab('tool')">
+⚡ Convert
+</button>
+
+<button onclick="saveTxt()">
+💾 Save
+</button>
+
+<button onclick="copyResult()">
+📋 Copy
+</button>
+
+<button onclick="removeDup()">
+🗑 Clean
+</button>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h3>Total Users</h3>
+
+<p>1,245</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Total Tools</h3>
+
+<p>12</p>
+
+</div>
+
+</div>
+
+<!-- RECENT -->
+
+<div class="recent-box">
+
+<h3>Recent Activity</h3>
+
+<p>✔ Converted combos</p>
+
+<p>✔ Removed duplicates</p>
+
+<p>✔ Saved TXT file</p>
+
+</div>
+
+</div>
+
+<!-- TOOL -->
+
+<div id="tool" class="tab-content">
+
+<div class="tool-card">
+
+<label class="label">
+Paste combo list
+</label>
+
+<!-- UPLOAD -->
+
+<label class="upload-btn">
+
+📁 Upload TXT
+
+<input type="file" id="fileInput" hidden>
+
+</label>
+
+<!-- DROP -->
+
+<div class="drop-zone" id="dropZone">
+
+📂 Drag & Drop TXT Here
+
+</div>
+
+<textarea id="input" placeholder="user:pass"></textarea>
+
+<select id="mode">
+
+<option value="userpass">
+Get User:Pass 🔐
+</option>
+
+<option value="user">
+Get User 👤
+</option>
+
+<option value="pass">
+Get Password 🔑
+</option>
+
+</select>
+
+<button class="main-btn" onclick="convert()">
+⚡ Start Convert
+</button>
+
+<label class="label" style="margin-top:15px;">
+Result
+</label>
+
+<textarea id="result" placeholder="Result here..."></textarea>
+
+<div class="row">
+
+<button class="small-btn copy" onclick="copyResult()">
+📋 Copy
+</button>
+
+<button class="small-btn remove" onclick="removeDup()">
+🗑 Remove Dup
+</button>
+
+<button class="small-btn save" onclick="saveTxt()">
+💾 Save TXT
+</button>
+
+</div>
+
+<div class="info" id="count">
+
+Acc checking done : 0
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
