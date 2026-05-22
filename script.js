@@ -1,4 +1,6 @@
+/* ========================= */
 /* LOADING */
+/* ========================= */
 
 window.onload=function(){
 
@@ -10,7 +12,9 @@ document.getElementById("loading").style.display="none"
 
 }
 
+/* ========================= */
 /* TAB */
+/* ========================= */
 
 function showTab(tabId){
 
@@ -26,7 +30,9 @@ document.getElementById(tabId)
 
 }
 
+/* ========================= */
 /* DETECT */
+/* ========================= */
 
 function detect(line){
 
@@ -40,7 +46,9 @@ return ":"
 
 }
 
+/* ========================= */
 /* CONVERT */
+/* ========================= */
 
 function convert(){
 
@@ -75,11 +83,15 @@ document.getElementById("result").value=out.join("\n")
 
 updateCount()
 
+autoSave()
+
 notify("Convert Complete ✅")
 
 }
 
+/* ========================= */
 /* REMOVE DUP */
+/* ========================= */
 
 function removeDup(){
 
@@ -93,11 +105,15 @@ document.getElementById("result").value=unique.join("\n")
 
 updateCount()
 
+autoSave()
+
 notify("Duplicates Removed 🗑")
 
 }
 
+/* ========================= */
 /* COPY */
+/* ========================= */
 
 function copyResult(){
 
@@ -109,7 +125,9 @@ notify("Copied Result 📋")
 
 }
 
+/* ========================= */
 /* SAVE TXT */
+/* ========================= */
 
 function saveTxt(){
 
@@ -129,7 +147,9 @@ notify("TXT Saved 💾")
 
 }
 
+/* ========================= */
 /* COUNT */
+/* ========================= */
 
 function updateCount(){
 
@@ -142,7 +162,53 @@ document.getElementById("count").innerText=
 
 }
 
+/* ========================= */
+/* AUTO SAVE */
+/* ========================= */
+
+function autoSave(){
+
+localStorage.setItem(
+"nebula_input",
+document.getElementById("input").value
+)
+
+localStorage.setItem(
+"nebula_result",
+document.getElementById("result").value
+)
+
+}
+
+function loadSave(){
+
+let savedInput=
+localStorage.getItem("nebula_input")
+
+let savedResult=
+localStorage.getItem("nebula_result")
+
+if(savedInput){
+
+document.getElementById("input").value=
+savedInput
+
+}
+
+if(savedResult){
+
+document.getElementById("result").value=
+savedResult
+
+updateCount()
+
+}
+
+}
+
+/* ========================= */
 /* AUTO */
+/* ========================= */
 
 function autoConvert(text){
 
@@ -152,7 +218,9 @@ convert()
 
 }
 
+/* ========================= */
 /* FILE */
+/* ========================= */
 
 document.getElementById("fileInput")
 .addEventListener("change",function(){
@@ -173,7 +241,9 @@ reader.readAsText(file)
 
 })
 
+/* ========================= */
 /* DRAG DROP */
+/* ========================= */
 
 const dropZone=document.getElementById("dropZone")
 
@@ -203,7 +273,9 @@ reader.readAsText(file)
 
 })
 
+/* ========================= */
 /* CLOCK */
+/* ========================= */
 
 setInterval(()=>{
 
@@ -220,12 +292,14 @@ document.getElementById("clock")
 
 },1000)
 
+/* ========================= */
 /* ONLINE USERS */
+/* ========================= */
 
 setInterval(()=>{
 
 let random=Math.floor(
-Math.random()*1+3
+Math.random()*1+6
 )
 
 document.getElementById("onlineCount")
@@ -233,21 +307,76 @@ document.getElementById("onlineCount")
 
 },3000)
 
-/* TOGGLE */
+/* ========================= */
+/* SETTINGS */
+/* ========================= */
 
 function toggleSwitch(el){
 
 el.classList.toggle("active")
 
-if(el.parentElement.innerText.includes("RGB")){
+let setting =
+el.parentElement.querySelector("span").innerText
+
+/* DARK MODE */
+
+if(setting==="Dark Mode"){
+
+document.body.classList.toggle("light-mode")
+
+notify("Theme Changed 🎨")
+
+}
+
+/* RGB MODE */
+
+if(setting==="RGB Mode"){
 
 document.body.classList.toggle("rgb-mode")
 
+notify("RGB Mode Changed 🌈")
+
 }
+
+/* ANIMATION */
+
+if(setting==="Animations"){
+
+document.body.classList.toggle("no-anim")
+
+notify("Animation Changed ⚡")
+
+}
+
+/* MUSIC */
+
+if(setting==="Music"){
+
+notify("Music Toggle 🎵")
 
 }
 
 /* NOTIFICATION */
+
+if(setting==="Notifications"){
+
+notify("Notifications Changed 🔔")
+
+}
+
+/* AUTO SAVE */
+
+if(setting==="Auto Save"){
+
+notify("Auto Save Changed 💾")
+
+}
+
+}
+
+/* ========================= */
+/* NOTIFY */
+/* ========================= */
 
 function notify(text){
 
@@ -266,3 +395,22 @@ div.remove()
 },3000)
 
 }
+
+/* ========================= */
+/* LOAD SAVE */
+/* ========================= */
+
+window.addEventListener(
+"load",
+loadSave
+)
+
+/* ========================= */
+/* AUTO SAVE EVENT */
+/* ========================= */
+
+document.getElementById("input")
+.addEventListener("input",autoSave)
+
+document.getElementById("result")
+.addEventListener("input",autoSave)
