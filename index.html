@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KAIZE TOOL</title>
+<title>KAIZE TOOL PANEL</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,6 +16,16 @@
 </head>
 
 <body>
+
+<!-- LOADING -->
+
+<div id="loading">
+
+<div class="loader"></div>
+
+<h1>KAIZE TOOL PANEL</h1>
+
+</div>
 
 <!-- VIDEO -->
 
@@ -34,15 +45,13 @@
 
 <div class="sidebar">
 
-<div class="profile">
+<div class="logo">
 
-<div class="profile-icon">
-👤
-</div>
+<div class="logo-circle"></div>
 
-<h2>TOOL FREE</h2>
+<h2>KAIZE TOOL PANEL</h2>
 
-<p>Modern Dashboard</p>
+<p>Next Level UI</p>
 
 </div>
 
@@ -56,35 +65,60 @@
 🛠 Tool
 </button>
 
-</div>
+<button onclick="showTab('activity')">
+📊 Activity
+</button>
+
+<button onclick="showTab('settings')">
+⚙ Settings
+</button>
 
 </div>
 
-<!-- MAIN CONTENT -->
+</div>
+
+<!-- MAIN -->
 
 <div class="main">
 
+<!-- TOPBAR -->
+
 <div class="topbar">
 
-<h1>KAIZE TOOL</h1>
+<div>
+
+<h1>Welcome Back 👋</h1>
+
+<p>Modern Futuristic Dashboard</p>
+
+</div>
 
 <div class="status">
+
 🟢 Online
-</div>
 
 </div>
 
-<!-- TABS -->
+</div>
 
-<div class="tabs">
+<!-- LIVE BAR -->
 
-<button class="tab-btn active" onclick="showTab('dashboard')">
-🏠 Dashboard
-</button>
+<div class="live-bar">
 
-<button class="tab-btn" onclick="showTab('tool')">
-🛠 Tool
-</button>
+<div class="live-users">
+
+🟢 Online Users :
+<span id="onlineCount">
+1523
+</span>
+
+</div>
+
+<div class="clock" id="clock">
+
+00:00:00
+
+</div>
 
 </div>
 
@@ -92,71 +126,49 @@
 
 <div id="dashboard" class="tab-content active-tab">
 
-<!-- SEARCH -->
-
-<div class="search-box">
-
-<input type="text" placeholder="Search tools...">
-
-</div>
-
-<!-- QUICK ACTION -->
-
-<div class="quick-actions">
-
-<button onclick="window.location.href='https://guns.lol/kaizestore'">
-⚡ Owner 
-</button>
-
-<button onclick="saveTxt()">
-💾 Save file
-</button>
-
-</div>
-
-<!-- STATS -->
-
 <div class="stats-grid">
 
 <div class="stat-card">
 
 <h3>Total Users</h3>
 
-<p>341</p>
+<h1 id="userCount">1245</h1>
 
 </div>
 
 <div class="stat-card">
 
-<h3>Total Tools</h3>
+<h3>Tools</h3>
 
-<p>3</p>
+<h1>12</h1>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Server</h3>
+
+<h1>Stable</h1>
 
 </div>
 
 </div>
 
-<!-- RECENT -->
+<div class="welcome-card">
 
-<div class="recent-box">
+<h2>⚡ KAIZE TOOL PANEL</h2>
 
-<h3>website update</h3>
+<p>
 
-<p>✔ Fast convert</p>
+Fast • Modern • Responsive • Futuristic
 
-<p>✔ Removed cooike</p>
+</p>
 
-<p>✔ Saved TXT file</p>
+<button onclick="showTab('tool')">
 
-<p>✔ Removed user/pass</p>
+Open Tool
 
-<p>✔ Safe website</p>
-
-<p>✔ Smooth funtion</p>
-
-<p>✔ NEW UI </p>
-
-<p>✔ status </p>
+</button>
 
 </div>
 
@@ -168,11 +180,13 @@
 
 <div class="tool-card">
 
-<label class="label">
-Paste combo list
-</label>
+<div class="tool-top">
 
-<!-- UPLOAD -->
+<h2>Combo Converter</h2>
+
+<input type="text" placeholder="Search...">
+
+</div>
 
 <label class="upload-btn">
 
@@ -181,8 +195,6 @@ Paste combo list
 <input type="file" id="fileInput" hidden>
 
 </label>
-
-<!-- DROP -->
 
 <div class="drop-zone" id="dropZone">
 
@@ -195,43 +207,144 @@ Paste combo list
 <select id="mode">
 
 <option value="userpass">
-Get User:Pass 🔐
+Get User:Pass
 </option>
 
 <option value="user">
-Get User 👤
+Get User
 </option>
 
 <option value="pass">
-Get Password 🔑
+Get Password
 </option>
 
 </select>
 
 <button class="main-btn" onclick="convert()">
-⚡ Start Convert
-</button>
 
-<label class="label" style="margin-top:15px;">
-Result
-</label>
+⚡ Start Convert
+
+</button>
 
 <textarea id="result" placeholder="Result here..."></textarea>
 
 <div class="row">
 
-<button class="small-btn copy" onclick="copyResult()">
+<button class="copy" onclick="copyResult()">
 📋 Copy
 </button>
 
-<button class="small-btn save" onclick="saveTxt()">
-💾 Save TXT
+<button class="remove" onclick="removeDup()">
+🗑 Remove Dup
+</button>
+
+<button class="save" onclick="saveTxt()">
+💾 Save
 </button>
 
 </div>
 
 <div class="info" id="count">
+
 Acc checking done : 0
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ACTIVITY -->
+
+<div id="activity" class="tab-content">
+
+<div class="activity-card">
+
+<h2>Recent Activity</h2>
+
+<div class="activity-list">
+
+<div class="activity-item">
+✅ Converted combo list
+</div>
+
+<div class="activity-item">
+📋 Copied result
+</div>
+
+<div class="activity-item">
+💾 Saved TXT file
+</div>
+
+<div class="activity-item">
+🗑 Removed duplicates
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SETTINGS -->
+
+<div id="settings" class="tab-content">
+
+<div class="settings-card">
+
+<h2>Settings</h2>
+
+<div class="setting">
+
+<span>Dark Mode</span>
+
+<div class="toggle active" onclick="toggleSwitch(this)">
+</div>
+
+</div>
+
+<div class="setting">
+
+<span>Animations</span>
+
+<div class="toggle active" onclick="toggleSwitch(this)">
+</div>
+
+</div>
+
+<div class="setting">
+
+<span>smooth</span>
+
+<div class="toggle active" onclick="toggleSwitch(this)">
+</div>
+
+</div>
+
+<div class="setting">
+
+<span>Notifications</span>
+
+<div class="toggle active" onclick="toggleSwitch(this)">
+</div>
+
+</div>
+
+<div class="setting">
+
+<span>RGB Mode</span>
+
+<div class="toggle" onclick="toggleSwitch(this)">
+</div>
+
+</div>
+
+<div class="setting">
+
+<span>Auto Save</span>
+
+<div class="toggle active" onclick="toggleSwitch(this)">
+</div>
 
 </div>
 
@@ -246,4 +359,5 @@ Acc checking done : 0
 <script src="script.js"></script>
 
 </body>
+
 </html>

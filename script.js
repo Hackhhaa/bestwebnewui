@@ -1,3 +1,15 @@
+/* LOADING */
+
+window.onload=function(){
+
+setTimeout(()=>{
+
+document.getElementById("loading").style.display="none"
+
+},1800)
+
+}
+
 /* TAB */
 
 function showTab(tabId){
@@ -63,6 +75,8 @@ document.getElementById("result").value=out.join("\n")
 
 updateCount()
 
+notify("Convert Complete ✅")
+
 }
 
 /* REMOVE DUP */
@@ -79,6 +93,8 @@ document.getElementById("result").value=unique.join("\n")
 
 updateCount()
 
+notify("Duplicates Removed 🗑")
+
 }
 
 /* COPY */
@@ -89,18 +105,7 @@ let text=document.getElementById("result").value
 
 navigator.clipboard.writeText(text)
 
-}
-
-/* COUNT */
-
-function updateCount(){
-
-let lines=document.getElementById("result").value
-.split("\n")
-.filter(x=>x)
-
-document.getElementById("count").innerText=
-"Acc checking done : "+lines.length
+notify("Copied Result 📋")
 
 }
 
@@ -119,6 +124,21 @@ a.href=URL.createObjectURL(blob)
 a.download="result.txt"
 
 a.click()
+
+notify("TXT Saved 💾")
+
+}
+
+/* COUNT */
+
+function updateCount(){
+
+let lines=document.getElementById("result").value
+.split("\n")
+.filter(x=>x)
+
+document.getElementById("count").innerText=
+"Acc checking done : "+lines.length
 
 }
 
@@ -182,3 +202,67 @@ autoConvert(e.target.result)
 reader.readAsText(file)
 
 })
+
+/* CLOCK */
+
+setInterval(()=>{
+
+let now=new Date()
+
+let h=String(now.getHours()).padStart(2,"0")
+
+let m=String(now.getMinutes()).padStart(2,"0")
+
+let s=String(now.getSeconds()).padStart(2,"0")
+
+document.getElementById("clock")
+.innerText=`${h}:${m}:${s}`
+
+},1000)
+
+/* ONLINE USERS */
+
+setInterval(()=>{
+
+let random=Math.floor(
+Math.random()*1+3
+)
+
+document.getElementById("onlineCount")
+.innerText=random
+
+},3000)
+
+/* TOGGLE */
+
+function toggleSwitch(el){
+
+el.classList.toggle("active")
+
+if(el.parentElement.innerText.includes("RGB")){
+
+document.body.classList.toggle("rgb-mode")
+
+}
+
+}
+
+/* NOTIFICATION */
+
+function notify(text){
+
+let div=document.createElement("div")
+
+div.className="notify"
+
+div.innerText=text
+
+document.body.appendChild(div)
+
+setTimeout(()=>{
+
+div.remove()
+
+},3000)
+
+}
